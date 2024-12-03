@@ -64,24 +64,24 @@ public class TestTree
 	
 	public void run()
 	{
-        String isDuck = Strings.IS_IT_A + Strings.DUCK;
-        String isRock = Strings.IS_IT_A + Strings.ROCK;
+        String isDuck = Strings.IS_IT_A + Strings.DUCK + "?";
+        String isRock = Strings.IS_IT_A + Strings.ROCK + "?";
         
         String ladybug = "Ladybug";
         String diffLady = "Is it an insect?";
-        String isLady = Strings.IS_IT_A + ladybug;
+        String isLady = Strings.IS_IT_A + ladybug + "?";
         
         String grasshopper = "Grasshopper";
         String diffGrass = "Is it red?";
-        String isGrass = Strings.IS_IT_A + grasshopper;
+        String isGrass = Strings.IS_IT_A + grasshopper + "?";
         
         String waterbottle = "Waterbottle";
         String diffWater = "Can it hold water?";
-        String isWater = Strings.IS_IT_A + waterbottle;
+        String isWater = Strings.IS_IT_A + waterbottle + "?";
         
         String bathtub = "Bathtub";
         String diffBath = "Is it handheld?";
-        String isBath = Strings.IS_IT_A + bathtub;
+        String isBath = Strings.IS_IT_A + bathtub + "?";
         
 
 		check(Strings.IS_IT_ALIVE);   // 1. instant yes on duck
