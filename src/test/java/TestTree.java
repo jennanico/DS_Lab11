@@ -64,14 +64,150 @@ public class TestTree
 	
 	public void run()
 	{
-		
-		check(Strings.IS_IT_ALIVE);
-        say("Y");
-        //now what? Think of all the input and outputs here...
-		
+        String isDuck = Strings.IS_IT_A + Strings.DUCK;
+        String isRock = Strings.IS_IT_A + Strings.ROCK;
+        
+        String ladybug = "Ladybug";
+        String diffLady = "Is it an insect?";
+        String isLady = Strings.IS_IT_A + ladybug;
+        
+        String grasshopper = "Grasshopper";
+        String diffGrass = "Is it red?";
+        String isGrass = Strings.IS_IT_A + grasshopper;
+        
+        String waterbottle = "Waterbottle";
+        String diffWater = "Can it hold water?";
+        String isWater = Strings.IS_IT_A + waterbottle;
+        
+        String bathtub = "Bathtub";
+        String diffBath = "Is it handheld?";
+        String isBath = Strings.IS_IT_A + bathtub;
+        
 
+		check(Strings.IS_IT_ALIVE);   // 1. instant yes on duck
+        say("Y");
+        check(isDuck);                 
+        say("Y");
+        check(Strings.I_WIN);
+        check(Strings.PLAY_AGAIN);
+        say("Y");
         
+        check(Strings.IS_IT_ALIVE);  // 2. instant yes on rock
+        say("N");
+        check(isRock); 
+        say("Y");
+        check(Strings.I_WIN);
+        check(Strings.PLAY_AGAIN);
+        say("Y");
         
+        check(Strings.IS_IT_ALIVE);   // 3. no on duck; insertion to left of root
+        say("Y");					  // "yes, no"
+        check(isDuck);
+        say("N");
+        check(Strings.WHAT_IS_THE_ANSWER);
+        say(ladybug);
+        check(Strings.NEW_QUESTION + Strings.DUCK + " and a" + ladybug);
+        say(diffLady);
+        check("Answering yes to " + diffLady + " means " + ladybug + "?");
+        say("Y");
+        check(Strings.THANKS);
+        check(Strings.PLAY_AGAIN);
+        say("Y");
+        
+        check(Strings.IS_IT_ALIVE);   // 3. no on rock; insertion to right of root
+        say("N");					  // "no, no"
+        check(isRock);
+        say("N");
+        check(Strings.WHAT_IS_THE_ANSWER);
+        say(waterbottle);
+        check(Strings.NEW_QUESTION + Strings.ROCK + " and a" + waterbottle);
+        say(diffWater);
+        check("Answering yes to " + diffWater + " means " + waterbottle + "?");
+        say("Y");
+        check(Strings.THANKS);
+        check(Strings.PLAY_AGAIN);
+        say("Y");
+        
+        check(Strings.IS_IT_ALIVE);   // 4. no on duck/ladybug; insertion to left of root, inverse question
+        say("Y");					  // "no, yes, no"
+        check(diffLady);
+        say("Y");
+        check(isLady);
+        say("N");
+        check(Strings.WHAT_IS_THE_ANSWER);
+        say(grasshopper);
+        check(Strings.NEW_QUESTION + ladybug + " and a" + grasshopper);
+        say(diffGrass);
+        check("Answering yes to " + diffGrass + " means " + grasshopper + "?");
+        say("N");
+        check(Strings.THANKS);
+        check(Strings.PLAY_AGAIN);
+        say("Y");
+        
+        check(Strings.IS_IT_ALIVE);   // 5. no on rock/waterbottle; insertion to right of root, inverse question
+        say("N");					  // "no, yes, no"
+        check(diffWater);
+        say("Y");
+        check(isWater);
+        say("N");
+        check(Strings.WHAT_IS_THE_ANSWER);
+        say(bathtub);
+        check(Strings.NEW_QUESTION + waterbottle + " and a" + bathtub);
+        say(diffWater);
+        check("Answering yes to " + diffWater + " means " + bathtub + "?");
+        say("N");
+        check(Strings.THANKS);
+        check(Strings.PLAY_AGAIN);
+        say("Y");
+        
+        check(Strings.IS_IT_ALIVE);   // 6. win on left side
+        say("Y");					  // "yes, yes, no, yes"
+        check(diffLady);
+        say("Y");
+        check(diffGrass);
+        say("N");
+        check(isGrass);
+        say("Y");
+        check(Strings.I_WIN);
+        check(Strings.PLAY_AGAIN);
+        say("Y");
+        
+        check(Strings.IS_IT_ALIVE);   // 7. win on right side
+        say("N");					  // "no, yes, no, yes"
+        check(diffWater);
+        say("Y");
+        check(diffBath);
+        say("N");
+        check(isBath);
+        say("Y");
+        check(Strings.I_WIN);
+        check(Strings.PLAY_AGAIN);
+        say("Y");
+        
+        check(Strings.IS_IT_ALIVE);   // 8. can still access old entries on left side
+        say("Y");					  // "yes, yes, yes, yes"
+        check(diffLady);
+        say("Y");
+        check(diffGrass);
+        say("Y");
+        check(isLady);
+        say("Y");
+        check(Strings.I_WIN);
+        check(Strings.PLAY_AGAIN);
+        say("Y");
+        
+        check(Strings.IS_IT_ALIVE);   // 9. can still access old entries on right side
+        say("N");					  // "no, yes, yes, yes"
+        check(diffWater);
+        say("Y");
+        check(diffBath);
+        say("Y");
+        check(isWater);
+        say("Y");
+        check(Strings.I_WIN);
+        check(Strings.PLAY_AGAIN);
+        say("Y");
+
         //close the streams at the end to enrue good behavior.
 		comp.close();
 		me.close();
