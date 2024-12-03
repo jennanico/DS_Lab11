@@ -106,7 +106,7 @@ public class TestTree
         say("N");
         check(Strings.WHAT_IS_THE_ANSWER);
         say(ladybug);
-        check(Strings.NEW_QUESTION + Strings.DUCK + " and a" + ladybug);
+        check(Strings.NEW_QUESTION + Strings.DUCK + " and a " + ladybug);
         say(diffLady);
         check("Answering yes to " + diffLady + " means " + ladybug + "?");
         say("Y");
@@ -120,7 +120,7 @@ public class TestTree
         say("N");
         check(Strings.WHAT_IS_THE_ANSWER);
         say(waterbottle);
-        check(Strings.NEW_QUESTION + Strings.ROCK + " and a" + waterbottle);
+        check(Strings.NEW_QUESTION + Strings.ROCK + " and a " + waterbottle);
         say(diffWater);
         check("Answering yes to " + diffWater + " means " + waterbottle + "?");
         say("Y");
@@ -136,7 +136,7 @@ public class TestTree
         say("N");
         check(Strings.WHAT_IS_THE_ANSWER);
         say(grasshopper);
-        check(Strings.NEW_QUESTION + ladybug + " and a" + grasshopper);
+        check(Strings.NEW_QUESTION + ladybug + " and a " + grasshopper);
         say(diffGrass);
         check("Answering yes to " + diffGrass + " means " + grasshopper + "?");
         say("N");
@@ -152,7 +152,7 @@ public class TestTree
         say("N");
         check(Strings.WHAT_IS_THE_ANSWER);
         say(bathtub);
-        check(Strings.NEW_QUESTION + waterbottle + " and a" + bathtub);
+        check(Strings.NEW_QUESTION + waterbottle + " and a " + bathtub);
         say(diffWater);
         check("Answering yes to " + diffWater + " means " + bathtub + "?");
         say("N");
