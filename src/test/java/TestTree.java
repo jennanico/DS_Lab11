@@ -153,7 +153,7 @@ public class TestTree
         check(Strings.WHAT_IS_THE_ANSWER);
         say(bathtub);
         check(Strings.NEW_QUESTION + waterbottle + " and a " + bathtub);
-        say(diffWater);
+        say(diffBath);
         check("Answering yes to " + diffWater + " means " + bathtub + "?");
         say("N");
         check(Strings.THANKS);
