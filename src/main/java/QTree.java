@@ -83,7 +83,6 @@ public class QTree
 			
 			if (curr.parent.yes == curr) { curr.parent.yes = newQuestionNode; }
 			else { curr.parent.no = newQuestionNode; }
-			
 			curr.parent = newQuestionNode;
 		}
 		else if (link.equals("N"))
@@ -103,7 +102,7 @@ public class QTree
 		String response = in.next();
 		
 		if (response.equals("Y")) { playGame(); }
-		
+		else return;
 		
 	}
 	
