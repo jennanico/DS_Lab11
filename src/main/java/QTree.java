@@ -19,8 +19,8 @@ public class QTree
 		//Please initialize your data here
 		
 		this.root = new QNode(Strings.IS_IT_ALIVE);
-		root.yes = new QNode(Strings.IS_IT_A + Strings.DUCK + "?", Strings.DUCK);
-		root.no = new QNode(Strings.IS_IT_A + Strings.ROCK + "?", Strings.ROCK);
+		root.yes = new QNode(Strings.IS_IT_A + Strings.DUCK + "?", Strings.DUCK, root);
+		root.no = new QNode(Strings.IS_IT_A + Strings.ROCK + "?", Strings.ROCK, root);
 	}
 	
     
@@ -61,11 +61,50 @@ public class QTree
 	public void loseGame(QNode curr)
 	{
 		out.println(Strings.WHAT_IS_THE_ANSWER);
-		String answer = in.next();
+		String newGuess = in.next();
 		
-		QNode newQuestion = new QNode(Strings.IS_IT_A + answer + "?", answer);
+		QNode newQuestionNode = new QNode(null);
+		QNode newGuessNode = new QNode(Strings.IS_IT_A + newGuess + "?", newGuess, newQuestionNode);
 		
-		out.println(Strings.NEW_QUESTION + curr.guess +  " and a " + answer);
+		out.println(Strings.NEW_QUESTION + curr.guess +  " and a " + newGuess);
+		String newQuestion1 = in.next();
+		String newQuestion2 = in.nextLine();
+		String newQuestion = newQuestion1 + newQuestion2;
+		
+		out.println("Answering yes to " + newQuestion + " means " + newGuess + "?");
+		String link = in.next();
+		
+		if (link.equals("Y")) 
+		{ 
+			newQuestionNode.question = newQuestion;
+			newQuestionNode.parent = curr.parent;
+			newQuestionNode.yes = newGuessNode;
+			newQuestionNode.no = curr;
+			
+			if (curr.parent.yes == curr) { curr.parent.yes = newQuestionNode; }
+			else { curr.parent.no = newQuestionNode; }
+			
+			curr.parent = newQuestionNode;
+		}
+		else if (link.equals("N"))
+		{ 
+			newQuestionNode.question = newQuestion;
+			newQuestionNode.parent = curr.parent;
+			newQuestionNode.no = newGuessNode;
+			newQuestionNode.yes = curr;
+
+			if (curr.parent.yes == curr) { curr.parent.yes = newQuestionNode; }
+			else { curr.parent.no = newQuestionNode; }
+			curr.parent = newQuestionNode;
+		}
+		
+		out.println(Strings.THANKS);
+		out.println(Strings.PLAY_AGAIN);
+		String response = in.next();
+		
+		if (response.equals("Y")) { playGame(); }
+		
+		
 	}
 	
 	
